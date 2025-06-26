@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Page</title>
+</head>
+<body>
+  
+</body>
+
+
+<style>
+  #formContainer{
+   font-family: 'Times New Roman', Times, serif 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   font-style: oblique;
+   column-width: auto;
+
+  }
+  #name{
+    font-family: 'Times New Roman', Times, serif 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: oblique;
+  }
+  #email{
+    font-family: 'Times New Roman', Times, serif 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: oblique;
+  }
+  #message{
+    font-family: 'Times New Roman', Times, serif fantasy;
+    font-style: oblique;
+  }
+</style>
+<div id="formContainer" style="padding: 20px; border-radius: 8px; background: #f0f0f0; transition: background 0.5s ease;">
+  <h3> Fill The Form Details & Give a Message at What Cost do You Need a Property? </h3>
+  <input id="name" placeholder="Your Name" style="padding: 8px; width: 100%; margin-bottom: 10px;" />
+  <input id="email" placeholder="Your Email" style="padding: 8px; width: 100%; margin-bottom: 10px;" />
+  <textarea id="message" placeholder="Your Message" style="padding: 8px; width: 100%; height: 80px;"></textarea>
+  <br />
+  <button onclick="submitForm()" style="margin-top: 10px; padding: 10px 15px;">Submit</button>
+  <button onclick="changeFormBackground()" style="margin-top: 10px; padding: 10px 15px;">Change Form Background</button>
+
+  <div id="preview" style="margin-top: 20px;"></div>
+</div>
+
+<script>
+  function submitForm() {
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    if (!name || !email || !message) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    const preview = document.getElementById("preview");
+    preview.innerHTML = `
+      <div style="margin-top: 15px; padding: 15px; background: #e0f7fa; border-left: 5px solid #00796B;">
+        <strong>Name:</strong> ${name}<br/>
+        <strong>Email:</strong> ${email}<br/>
+        <strong>Message:</strong> ${message}
+      </div>
+    `;
+
+    document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("message").value = "";
+  }
+
+  function changeFormBackground() {
+    const r = Math.floor(Math.random() * 200 + 30);
+    const g = Math.floor(Math.random() * 200 + 30);
+    const b = Math.floor(Math.random() * 200 + 30);
+    document.getElementById("formContainer").style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+  }
+</script>
+</html>
